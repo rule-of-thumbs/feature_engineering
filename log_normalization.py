@@ -20,8 +20,8 @@ def log_normal_df(df):
   if (df == 0).all():
     return df, None
   # get base
-  base = np.log(df.loc[(df != 0) & (~pd.isnull(df))].max())
   e = df.loc[(df != 0) & (~pd.isnull(df))].min() * 1e-1
+  base = np.log(df.loc[(df != 0) & (~pd.isnull(df))].max()) + e
   
   # only change e when it zero, fill na
   df_temp = df.copy()
