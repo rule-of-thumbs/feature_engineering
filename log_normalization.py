@@ -16,7 +16,7 @@ def log_normal_df(df):
     return df, None
   # get base
   log_max = np.log(df.max())
-  e = df.loc[df != 0].min() * 1e-1
+  e = df.loc[(df != 0) | (df != np.nan)].min() * 1e-1
   
   # only change e when it zero, fill na
   df_temp = df.replace(0, e)
