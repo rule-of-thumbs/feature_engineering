@@ -4,6 +4,10 @@ from scipy.stats import entropy
 def regularity_df(df, boolean=False):
     # columns의 순서가 중요하다
     df_temp = df.copy()
+    
+    # replace negative or nan values
+    df_temp[(df_temp < 0) & (df_temp == np.nan)] = 0
+    
     if boolean == True:
         df_temp = df_temp.astype(bool)
   
