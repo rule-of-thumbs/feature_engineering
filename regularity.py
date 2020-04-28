@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 from scipy.stats import entropy
 
 # df, sequence > bool(regular), amount(regular)
@@ -6,7 +8,7 @@ def regularity_df(df, boolean=False):
     df_temp = df.copy()
     
     # replace negative or nan values
-    df_temp[(df_temp < 0) & (df_temp == np.nan)] = 0
+    df_temp[(df_temp < 0) & (pd.isnull(df_temp))] = 0
     
     if boolean == True:
         df_temp = df_temp.astype(bool)
