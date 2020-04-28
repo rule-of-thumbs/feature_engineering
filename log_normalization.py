@@ -17,6 +17,8 @@ def log_normal_df(df):
   if df[df < 0].any():
     # log(negative) returns np.nan
     return df, None
+  if (df == 0).all():
+    return df, None
   # get base
   base = np.log(df.loc[(df != 0) & (~pd.isnull(df))].max())
   e = df.loc[(df != 0) & (~pd.isnull(df))].min() * 1e-1
