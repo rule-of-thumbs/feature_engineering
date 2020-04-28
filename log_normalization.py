@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 # nobs, mx, mu, var, skew, kurt = stats.describe(log_transformed)
 # get log normalization fit parameters: Log-Max
 # https://towardsdatascience.com/transforming-skewed-data-73da4c2d0d16
