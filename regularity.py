@@ -7,8 +7,11 @@ def regularity_df(df, boolean=False):
     # columns의 순서가 중요하다
     df_temp = df.copy()
     
-    # replace negative or nan values
-    df_temp[(df_temp < 0) & (pd.isnull(df_temp))] = 0
+    # replace nan values
+    df_temp[(pd.isnull(df_temp))] = 0
+    # parallel move when data is negative
+    if df_temp.min() < 0:
+        df_temp += abs(df_temp.min())
     
     if boolean == True:
         df_temp = df_temp.astype(bool)
